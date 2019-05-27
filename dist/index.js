@@ -4,7 +4,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var fs = require('fs');
 var ethabi = require('ethereumjs-abi');
 var ethers = require('ethers');
 var Buffer = require('buffer/').Buffer;
@@ -14,15 +13,7 @@ var InputDataDecoder = function () {
   function InputDataDecoder(prop) {
     _classCallCheck(this, InputDataDecoder);
 
-    this.abi = [];
-
-    if (typeof prop === 'string') {
-      this.abi = JSON.parse(fs.readFileSync(prop));
-    } else if (prop instanceof Object) {
-      this.abi = prop;
-    } else {
-      throw new TypeError('Must pass ABI array object or file path to constructor');
-    }
+    this.abi = prop;
   }
 
   _createClass(InputDataDecoder, [{
